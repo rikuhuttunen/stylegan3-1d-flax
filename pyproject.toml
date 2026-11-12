@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "stylegan3-1d-flax"
+dynamic = ["version"]
+description = "StyleGAN3 models for 1D signals implemented with Jax/Flax"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Riku Huttunen", email = "void@some.where" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "flax",
+  #"jax",  # For CPU only
+  "jax[cuda12]",  # For GPU and CPU
+  "numpy",
+  "scipy"
+]
+
+[project.urls]
+Documentation = "https://github.com/rikuhuttunen/stylegan3-1d-flax#readme"
+Issues = "https://github.com/rikuhuttunen/stylegan3-1d-flax/issues"
+Source = "https://github.com/rikuhuttunen/stylegan3-1d-flax"
+
+[tool.hatch.version]
+path = "src/stylegan3_1d_flax/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/stylegan3_1d_flax tests}"
+
+[tool.coverage.run]
+source_pkgs = ["stylegan3_1d_flax", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/stylegan3_1d_flax/__about__.py",
+]
+
+[tool.coverage.paths]
+stylegan3_1d_flax = ["src/stylegan3_1d_flax", "*/stylegan3-1d-flax/src/stylegan3_1d_flax"]
+tests = ["tests", "*/stylegan3-1d-flax/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
