@@ -12,6 +12,7 @@
 
 ## Installation
 
+Clone the repository and run
 ```console
-pip install stylegan3-1d-flax
+pip install .
 ```
