@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "StyleGAN3 models for 1D signals implemented with Jax/Flax"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
+license-files = ["LICENSE.txt"]
 keywords = []
 authors = [
   { name = "Riku Huttunen", email = "void@some.where" },
